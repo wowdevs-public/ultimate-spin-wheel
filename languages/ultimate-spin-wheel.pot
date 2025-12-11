@@ -1,0 +1,387 @@
+# Copyright (C) 2025 wowDevs
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ultimate Spin Wheel - Gamify Your Store & Boost Sales 1.0.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-spin-wheel\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-12-11T11:26:15+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: ultimate-spin-wheel\n"
+
+#. Plugin Name of the plugin
+#: ultimate-spin-wheel.php
+msgid "Ultimate Spin Wheel - Gamify Your Store & Boost Sales"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: ultimate-spin-wheel.php
+msgid "https://wowdevs.com/plugins/ultimate-spin-wheel"
+msgstr ""
+
+#. Description of the plugin
+#: ultimate-spin-wheel.php
+msgid "The Ultimate Spin Wheel plugin allows you to engage your visitors with an interactive cart that offers coupons and other rewards, seamlessly integrated with WooCommerce."
+msgstr ""
+
+#. Author of the plugin
+#: ultimate-spin-wheel.php
+msgid "wowDevs"
+msgstr ""
+
+#. Author URI of the plugin
+#: ultimate-spin-wheel.php
+msgid "https://wowdevs.com/"
+msgstr ""
+
+#: dci/deactivate-feedback.php:48
+msgid "Give feedback"
+msgstr ""
+
+#: dci/deactivate-feedback.php:50
+msgid "Goodbyes are never easy. If you have a moment, please share your feedback on how we can improve."
+msgstr ""
+
+#: dci/deactivate-feedback.php:76
+msgid "Switching Domain"
+msgstr ""
+
+#: dci/deactivate-feedback.php:99
+msgid "Couldn't understand"
+msgstr ""
+
+#: dci/deactivate-feedback.php:146
+msgid "Found a better plugin"
+msgstr ""
+
+#: dci/deactivate-feedback.php:163
+msgid "Missing a specific feature"
+msgstr ""
+
+#: dci/deactivate-feedback.php:201
+msgid "Not working"
+msgstr ""
+
+#: dci/deactivate-feedback.php:225
+msgid "Others"
+msgstr ""
+
+#: dci/deactivate-feedback.php:233
+msgid "What is the main reason for deactivating?"
+msgstr ""
+
+#: dci/deactivate-feedback.php:239
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: dci/deactivate-feedback.php:243
+msgid "Cancel"
+msgstr ""
+
+#: dci/deactivate-feedback.php:248
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: dci/insights.php:655
+msgid "Learn More"
+msgstr ""
+
+#: dci/insights.php:664
+msgid "Yes, I'd Love To Contribute"
+msgstr ""
+
+#: dci/insights.php:667
+msgid "Skip For Now"
+msgstr ""
+
+#: dci/insights.php:670
+msgid "No Thanks"
+msgstr ""
+
+#: dci/insights.php:705
+msgid "What we"
+msgstr ""
+
+#: dci/insights.php:706
+msgid "collect"
+msgstr ""
+
+#: dci/insights.php:714
+msgid "Allow"
+msgstr ""
+
+#: dci/insights.php:717
+msgid "I'll Skip For Now"
+msgstr ""
+
+#: dci/insights.php:720
+msgid "Don't Allow"
+msgstr ""
+
+#: dci/notice.php:21
+msgid "Never miss an important update."
+msgstr ""
+
+#: dci/notice.php:24
+msgid "Get notified when there are new updates available for your plugins and themes. In the current version of this message it is clear that you are being sent a confirmation email to confirm your opt-in."
+msgstr ""
+
+#: dci/notice.php:42
+msgid "Allow & Continue"
+msgstr ""
+
+#: dci/notice.php:46
+msgid "Skip"
+msgstr ""
+
+#: dci/notice.php:52
+msgid "Which permission are being granted?"
+msgstr ""
+
+#: dci/notice.php:64
+msgid "View Basic Profile Info."
+msgstr ""
+
+#: dci/notice.php:67
+msgid "Your WordPress user's first & last name, and email address."
+msgstr ""
+
+#: dci/notice.php:79
+msgid "View Basic Website Info."
+msgstr ""
+
+#: dci/notice.php:82
+msgid "Homepage URL & title, WP & PHP versions, and site language."
+msgstr ""
+
+#: dci/notice.php:94
+msgid "View Basic Plugin Info."
+msgstr ""
+
+#: dci/notice.php:97
+msgid "Current Plugin & SDK versions, and if active or uninstalled."
+msgstr ""
+
+#: includes/addons.php:57
+#: includes/admin/class-menu.php:40
+#: modules/spin-wheel/class-module-init.php:32
+msgid "Spin Wheel"
+msgstr ""
+
+#: includes/addons.php:68
+msgid "Advanced Counter"
+msgstr ""
+
+#: includes/addons.php:79
+msgid "Advanced Skill Bars"
+msgstr ""
+
+#: includes/addons.php:90
+msgid "Advanced Slider"
+msgstr ""
+
+#: includes/addons.php:101
+msgid "Animated Heading"
+msgstr ""
+
+#: includes/addons.php:112
+msgid "Audio Player"
+msgstr ""
+
+#: includes/addons.php:123
+msgid "Breadcrumbs"
+msgstr ""
+
+#: includes/addons.php:138
+msgid "Form Builder Emails Receiver"
+msgstr ""
+
+#: includes/addons.php:139
+msgid "Email Address"
+msgstr ""
+
+#: includes/addons.php:140
+msgid "By default, the form builder sends emails to the admin email. If you'd like to send emails to a different address, you can configure it here."
+msgstr ""
+
+#: includes/addons.php:151
+msgid "Google Map"
+msgstr ""
+
+#: includes/addons.php:152
+msgid "API Key"
+msgstr ""
+
+#: includes/addons.php:153
+msgid "Google Maps API is a service that offers detailed maps and other geographic information for use in online and offline map applications, and websites."
+msgstr ""
+
+#: includes/addons.php:164
+msgid "Mailchimp API Key"
+msgstr ""
+
+#: includes/addons.php:165
+msgid "Access Key"
+msgstr ""
+
+#: includes/addons.php:166
+msgid "Mailchimp is a popular marketing and automation platform for small businesses."
+msgstr ""
+
+#: includes/addons.php:172
+#: includes/addons.php:173
+msgid "Audience ID"
+msgstr ""
+
+#: includes/addons.php:174
+msgid "Each Mailchimp audience has a unique audience ID (sometimes called a list ID) ."
+msgstr ""
+
+#: includes/addons.php:186
+msgid "Instagram"
+msgstr ""
+
+#: includes/addons.php:187
+msgid "App Id"
+msgstr ""
+
+#: includes/addons.php:195
+#: includes/addons.php:196
+msgid "App Secret"
+msgstr ""
+
+#: includes/addons.php:204
+#: includes/addons.php:205
+msgid "Access Token"
+msgstr ""
+
+#: includes/admin/class-menu.php:42
+msgid "Dashboard"
+msgstr ""
+
+#: includes/admin/class-menu.php:47
+msgid "Campaigns"
+msgstr ""
+
+#: includes/admin/class-menu.php:60
+msgid "License"
+msgstr ""
+
+#: includes/admin/class-menu.php:66
+msgid "Support"
+msgstr ""
+
+#: includes/class-admin-feeds.php:54
+msgid "View Demo"
+msgstr ""
+
+#: includes/class-admin-feeds.php:113
+#: includes/class-admin-feeds.php:138
+msgid "Items Not Found"
+msgstr ""
+
+#: includes/class-admin-feeds.php:147
+msgid "ago"
+msgstr ""
+
+#: modules/spin-wheel/class-entries.php:83
+#: modules/spin-wheel/class-entries.php:196
+#: modules/spin-wheel/class-entries.php:227
+#: modules/spin-wheel/class-entries.php:273
+#: modules/spin-wheel/class-entries.php:384
+#: modules/spin-wheel/class-entries.php:396
+#: modules/spin-wheel/class-spin-wheel.php:35
+msgid "Invalid nonce"
+msgstr ""
+
+#: modules/spin-wheel/class-entries.php:388
+msgid "Cache cleared successfully"
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:40
+#: modules/spin-wheel/class-module-init.php:42
+#: modules/spin-wheel/class-module-init.php:43
+msgid "Engagements"
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:41
+msgid "Engagement"
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:44
+msgid "Add New"
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:45
+msgid "Add New Template"
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:46
+msgid "New Template"
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:47
+msgid "Edit Template"
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:48
+msgid "View Template"
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:49
+msgid "All Templates"
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:50
+msgid "Search Templates"
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:51
+msgid "Parent Template:"
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:52
+msgid "No found."
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:53
+msgid "No found in Trash."
+msgstr ""
+
+#: modules/spin-wheel/class-module-init.php:58
+msgid "Description."
+msgstr ""
+
+#: modules/spin-wheel/class-spin-wheel.php:80
+msgid "Error saving data"
+msgstr ""
+
+#: modules/spin-wheel/class-spin-wheel.php:82
+msgid "Data saved successfully"
+msgstr ""
+
+#: plugin.php:40
+#: plugin.php:51
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: ultimate-spin-wheel.php:109
+msgid "Ultimate Spin Wheel is not working because you need to activate the WooCommerce plugin."
+msgstr ""
+
+#: ultimate-spin-wheel.php:110
+msgid "Activate WooCommerce Now"
+msgstr ""
+
+#: ultimate-spin-wheel.php:118
+msgid "Ultimate Spin Wheel is not working because you need to install the WooCommerce plugin."
+msgstr ""
+
+#: ultimate-spin-wheel.php:119
+msgid "Install WooCommerce Now"
+msgstr ""

@@ -1,0 +1,17 @@
+= 1.0.3 [13th Aug 2025] =
+
+🎉 **Major Release - Feature-Packed Launch**
+
+**New Features:**
+* ✨ Complete wheel builder with unlimited customization
+* 🎯 Advanced targeting and trigger systems  
+* 📧 Built-in email capture with CSV export
+* 📊 Comprehensive analytics dashboard
+* 🎨 Professional design templates
+* 📱 Mobile-first responsive design
+* 🛡️ GDPR compliance tools
+* 🎪 Gamification psychology features
+* ⚡ Lightning-fast performance optimization
+* 🌐 Cross-browser compatibility
+* 🛡️ Anti-spam protection
+* 🎨 Multi-wheel campaigns
