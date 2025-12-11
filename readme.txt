@@ -9,7 +9,7 @@ Tested up to: 6.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Transform visitors into customers with engaging spin-to-win popups. Capture emails, reduce cart abandonment, and boost conversions with customizable discount wheels.
+Boost sales with engaging spin-to-win popups. Capture emails and reduce cart abandonment with customizable discount wheels.
 
 == Description ==
 
