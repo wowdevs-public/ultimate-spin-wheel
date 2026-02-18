@@ -1,7 +1,7 @@
 === Ultimate Spin Wheel - Gamify Your Store & Boost Sales ===
 Contributors: wowdevs, bdkoder
 Donate link: https://wowdevs.com/plugins/spin-wheel
-Tags: spin wheel, coupon wheel, discount wheel, WooCommerce, prize wheel, lucky wheel, spin to win
+Tags: spin wheel, coupon wheel, discount wheel, WooCommerce, prize wheel
 Stable tag: 2.0.2
 Requires PHP: 7.4
 Requires at least: 6.1
@@ -9,7 +9,7 @@ Tested up to: 6.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Boost sales and capture leads with engaging spin-to-win popups. Reduce cart abandonment and increase conversions with customizable discount wheels for WordPress & WooCommerce.
+Boost sales and capture leads with engaging spin-to-win popups. Reduce cart abandonment and increase conversions with customizable discount wheels.
 
 == Description ==
 
@@ -204,16 +204,15 @@ Development happens on GitHub:
 *   **Improved:** Security (Nonce verification & Sanitization)
 *   **Fixed:** Mobile responsiveness and sound playback issues
 
-= 1.0.6 [19th December 2025] =
-* Added: Complete system improvements
-
 = 1.0.5 [20th January 2026] =
+* Added: Complete system improvements
 * Added: Phone number field in leads export (Thanks to Joy)
 
 = 1.0.4 [1st November 2025] =
 * Improved: Complete system improvements
 
 = 1.0.3 [13th August 2025] =
+*   **Initial Release:** Ultimate Spin Wheel
 * Added: Complete wheel builder with unlimited customization
 * Added: Advanced targeting and trigger systems
 * Added: Built-in email capture with CSV export
@@ -226,6 +225,3 @@ Development happens on GitHub:
 * Added: Cross-browser compatibility
 * Added: Anti-spam protection
 * Added: Multi-wheel campaigns
-
-= 1.0.0 [20th September 2025] =
-*   **Initial Release:** Ultimate Spin Wheel
