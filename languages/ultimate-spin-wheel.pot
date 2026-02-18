@@ -1,15 +1,15 @@
-# Copyright (C) 2025 wowDevs
+# Copyright (C) 2026 wowDevs
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Spin Wheel - Gamify Your Store & Boost Sales 1.0.4\n"
+"Project-Id-Version: Ultimate Spin Wheel - Gamify Your Store & Boost Sales 2.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-spin-wheel\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-12-11T11:26:15+00:00\n"
+"POT-Creation-Date: 2026-02-18T17:02:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: ultimate-spin-wheel\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: ultimate-spin-wheel.php
-msgid "https://wowdevs.com/plugins/ultimate-spin-wheel"
+msgid "https://wowdevs.com/plugins/spin-wheel"
 msgstr ""
 
 #. Description of the plugin
@@ -168,8 +168,8 @@ msgid "Current Plugin & SDK versions, and if active or uninstalled."
 msgstr ""
 
 #: includes/addons.php:57
-#: includes/admin/class-menu.php:40
-#: modules/spin-wheel/class-module-init.php:32
+#: includes/admin/class-menu.php:41
+#: includes/core/class-post-type.php:27
 msgid "Spin Wheel"
 msgstr ""
 
@@ -260,20 +260,39 @@ msgstr ""
 msgid "Access Token"
 msgstr ""
 
-#: includes/admin/class-menu.php:42
+#: includes/admin/class-menu.php:43
 msgid "Dashboard"
 msgstr ""
 
-#: includes/admin/class-menu.php:47
+#: includes/admin/class-menu.php:48
 msgid "Campaigns"
 msgstr ""
 
-#: includes/admin/class-menu.php:60
-msgid "License"
+#: includes/admin/class-menu.php:53
+msgid "Leads"
+msgstr ""
+
+#: includes/admin/class-menu.php:58
+#: includes/admin/class-menu.php:101
+msgid "Settings"
 msgstr ""
 
 #: includes/admin/class-menu.php:66
+#: includes/admin/class-menu.php:67
+#: includes/admin/class-menu.php:112
+msgid "Get PRO"
+msgstr ""
+
+#: includes/admin/class-menu.php:78
+msgid "License"
+msgstr ""
+
+#: includes/admin/class-menu.php:84
 msgid "Support"
+msgstr ""
+
+#: includes/admin/class-menu.php:112
+msgid "Save 30%"
 msgstr ""
 
 #: includes/class-admin-feeds.php:54
@@ -289,99 +308,351 @@ msgstr ""
 msgid "ago"
 msgstr ""
 
-#: modules/spin-wheel/class-entries.php:83
-#: modules/spin-wheel/class-entries.php:196
-#: modules/spin-wheel/class-entries.php:227
-#: modules/spin-wheel/class-entries.php:273
-#: modules/spin-wheel/class-entries.php:384
-#: modules/spin-wheel/class-entries.php:396
-#: modules/spin-wheel/class-spin-wheel.php:35
+#: includes/core/class-campaigns.php:38
+msgid "Invalid security token"
+msgstr ""
+
+#: includes/core/class-campaigns.php:43
+msgid "Insufficient permissions"
+msgstr ""
+
+#: includes/core/class-campaigns.php:49
+#: includes/core/class-spin-wheel.php:346
+#: includes/core/class-spin-wheel.php:1812
+msgid "Invalid campaign ID"
+msgstr ""
+
+#: includes/core/class-campaigns.php:55
+msgid "Campaign not found"
+msgstr ""
+
+#: includes/core/class-campaigns.php:66
+msgid "Campaign duplicated successfully"
+msgstr ""
+
+#: includes/core/class-campaigns.php:81
+msgid "Original campaign not found"
+msgstr ""
+
+#: includes/core/class-entries.php:99
+#: includes/core/class-entries.php:256
+#: includes/core/class-entries.php:287
+#: includes/core/class-entries.php:333
+#: includes/core/class-entries.php:542
+#: includes/core/class-entries.php:554
+#: includes/core/class-entries.php:573
+#: includes/core/class-entries.php:592
+#: includes/core/class-entries.php:731
+#: includes/core/class-entries.php:796
+#: includes/core/class-reports.php:41
+#: includes/core/class-settings.php:170
+#: includes/core/class-settings.php:192
+#: includes/core/class-spin-wheel.php:96
+#: includes/core/class-spin-wheel.php:205
+#: includes/core/class-spin-wheel.php:341
+#: includes/core/class-spin-wheel.php:1807
 msgid "Invalid nonce"
 msgstr ""
 
-#: modules/spin-wheel/class-entries.php:388
+#: includes/core/class-entries.php:546
 msgid "Cache cleared successfully"
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:40
-#: modules/spin-wheel/class-module-init.php:42
-#: modules/spin-wheel/class-module-init.php:43
+#. translators: 1: Number of leads updated, 2: New stage name
+#: includes/core/class-entries.php:704
+msgid "%1$d leads updated to %2$s"
+msgstr ""
+
+#: includes/core/class-entries.php:784
+msgid "Identity blocked successfully"
+msgstr ""
+
+#: includes/core/class-entries.php:818
+msgid "Identity unblocked successfully"
+msgstr ""
+
+#: includes/core/class-post-type.php:35
+#: includes/core/class-post-type.php:37
+#: includes/core/class-post-type.php:38
+#: includes/core/class-reports.php:579
 msgid "Engagements"
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:41
+#: includes/core/class-post-type.php:36
 msgid "Engagement"
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:44
+#: includes/core/class-post-type.php:39
 msgid "Add New"
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:45
-msgid "Add New Template"
+#: includes/core/class-post-type.php:40
+msgid "Add New Spin Wheel"
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:46
-msgid "New Template"
+#: includes/core/class-post-type.php:41
+msgid "New Spin Wheel"
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:47
-msgid "Edit Template"
+#: includes/core/class-post-type.php:42
+msgid "Edit Spin Wheel"
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:48
-msgid "View Template"
+#: includes/core/class-post-type.php:43
+msgid "View Spin Wheel"
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:49
-msgid "All Templates"
+#: includes/core/class-post-type.php:44
+msgid "All Spin Wheels"
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:50
-msgid "Search Templates"
+#: includes/core/class-post-type.php:45
+msgid "Search Spin Wheels"
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:51
-msgid "Parent Template:"
+#: includes/core/class-post-type.php:46
+msgid "Parent Spin Wheel:"
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:52
+#: includes/core/class-post-type.php:47
 msgid "No found."
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:53
+#: includes/core/class-post-type.php:48
 msgid "No found in Trash."
 msgstr ""
 
-#: modules/spin-wheel/class-module-init.php:58
+#: includes/core/class-post-type.php:53
 msgid "Description."
 msgstr ""
 
-#: modules/spin-wheel/class-spin-wheel.php:80
+#: includes/core/class-reports.php:530
+msgid "Hourly Engagement"
+msgstr ""
+
+#: includes/core/class-reports.php:642
+msgid "Weekly Engagements"
+msgstr ""
+
+#: includes/core/class-reports.php:717
+msgid "Prize Distribution"
+msgstr ""
+
+#: includes/core/class-settings.php:37
+msgid "New"
+msgstr ""
+
+#: includes/core/class-settings.php:43
+msgid "Follow-up"
+msgstr ""
+
+#: includes/core/class-settings.php:49
+msgid "Purchased"
+msgstr ""
+
+#: includes/core/class-settings.php:55
+msgid "Archived"
+msgstr ""
+
+#: includes/core/class-settings.php:61
+msgid "Trash"
+msgstr ""
+
+#: includes/core/class-settings.php:83
+msgid "I agree to the privacy policy and terms."
+msgstr ""
+
+#: includes/core/class-settings.php:207
+msgid "Global settings updated successfully"
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:104
+msgid "Campaign ID is required"
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:119
+#: includes/core/class-spin-wheel.php:1192
+msgid "You have already played this campaign!"
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:287
 msgid "Error saving data"
 msgstr ""
 
-#: modules/spin-wheel/class-spin-wheel.php:82
+#. translators: %s: Site name
+#: includes/core/class-spin-wheel.php:293
+msgid "Your Coupon from %s"
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:323
 msgid "Data saved successfully"
 msgstr ""
 
-#: plugin.php:40
-#: plugin.php:51
+#: includes/core/class-spin-wheel.php:337
+msgid "Your access has been restricted."
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:352
+msgid "Campaign not found or not available."
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:363
+msgid "Please use a valid, non-temporary email address."
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:385
+#: includes/core/class-spin-wheel.php:409
+msgid "Email is required."
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:389
+#: includes/core/class-spin-wheel.php:413
+#: includes/core/class-spin-wheel.php:449
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:395
+#: includes/core/class-spin-wheel.php:435
+msgid "Name is required."
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:399
+#: includes/core/class-spin-wheel.php:439
+#: includes/core/class-spin-wheel.php:463
+msgid "Please enter a valid name."
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:422
+msgid "Phone number is required."
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:426
+#: includes/core/class-spin-wheel.php:456
+msgid "Please enter a valid phone number."
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:490
+msgid "You are not eligible to spin at this time."
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:511
+msgid "No prizes configured"
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:594
+msgid "No available prizes."
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:662
+msgid "Better Luck!"
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:664
+msgid "Try again next time!"
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:667
+msgid "Congratulations!"
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:669
+msgid "You won a {{discount_label}} discount!"
+msgstr ""
+
+#: includes/core/class-spin-wheel.php:702
+#: includes/core/class-spin-wheel.php:1194
+msgid "Check your email for the coupon code!"
+msgstr ""
+
+#. translators: %s: Site name
+#: includes/core/class-spin-wheel.php:819
+msgid "Your Reward from %s"
+msgstr ""
+
+#: includes/core/templates/email-coupon.php:191
+msgid "Lucky Win"
+msgstr ""
+
+#: includes/core/templates/email-coupon.php:192
+msgid "You Won!"
+msgstr ""
+
+#. translators: %s: Prize/coupon title
+#: includes/core/templates/email-coupon.php:196
+msgid "Congratulations! You spinned the wheel and unlocked a special %s reward."
+msgstr ""
+
+#: includes/core/templates/email-coupon.php:201
+msgid "YOUR EXCLUSIVE CODE"
+msgstr ""
+
+#: includes/core/templates/email-coupon.php:204
+msgid "Apply this code at checkout to claim your discount."
+msgstr ""
+
+#: includes/core/templates/email-coupon.php:210
+msgid "REDEEM YOUR PRIZE"
+msgstr ""
+
+#. translators: %s: Site name with link
+#: includes/core/templates/email-coupon.php:216
+msgid "Visit us at %s"
+msgstr ""
+
+#. translators: 1: Current year, 2: Site name
+#: includes/core/templates/email-coupon.php:221
+msgid "© %1$s %2$s. All rights reserved."
+msgstr ""
+
+#: includes/core/themes-default.php:179
+msgid "Oops!"
+msgstr ""
+
+#: includes/core/themes-default.php:184
+msgid "⏱ Try again in"
+msgstr ""
+
+#: includes/core/themes-default.php:188
+msgid "Hours"
+msgstr ""
+
+#: includes/core/themes-default.php:193
+msgid "Mins"
+msgstr ""
+
+#: includes/core/themes-default.php:198
+msgid "Secs"
+msgstr ""
+
+#: includes/core/themes-default.php:205
+msgid "You can spin again!"
+msgstr ""
+
+#: includes/core/themes-default.php:208
+msgid "Close"
+msgstr ""
+
+#: includes/core/themes-default.php:245
+msgid "Click to Copy"
+msgstr ""
+
+#: plugin.php:43
+#: plugin.php:54
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: ultimate-spin-wheel.php:109
+#: ultimate-spin-wheel.php:108
 msgid "Ultimate Spin Wheel is not working because you need to activate the WooCommerce plugin."
 msgstr ""
 
-#: ultimate-spin-wheel.php:110
+#: ultimate-spin-wheel.php:109
 msgid "Activate WooCommerce Now"
 msgstr ""
 
-#: ultimate-spin-wheel.php:118
+#: ultimate-spin-wheel.php:117
 msgid "Ultimate Spin Wheel is not working because you need to install the WooCommerce plugin."
 msgstr ""
 
-#: ultimate-spin-wheel.php:119
+#: ultimate-spin-wheel.php:118
 msgid "Install WooCommerce Now"
 msgstr ""

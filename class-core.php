@@ -19,6 +19,12 @@ defined( 'ABSPATH' ) || exit;
  */
 final class Core {
 
+
+
+
+
+
+
 	/**
 	 * Instance
 	 *
@@ -82,11 +88,38 @@ final class Core {
 			new Admin();
 		}
 
-		require_once USPIN_WHEEL_MODULES_PATH . '/spin-wheel/class-module-init.php';
-		require_once USPIN_WHEEL_MODULES_PATH . '/spin-wheel/class-spin-wheel.php';
-		require_once USPIN_WHEEL_MODULES_PATH . '/spin-wheel/class-reports.php';
-		require_once USPIN_WHEEL_MODULES_PATH . '/spin-wheel/class-entries.php';
-		$spin_wheel = new \USPIN_WHEEL\Modules\SpinWheel\Module_Init();
+		require_once USPIN_WHEEL_INC_PATH . 'core/class-post-type.php';
+		require_once USPIN_WHEEL_INC_PATH . 'core/class-style-generator.php';
+		require_once USPIN_WHEEL_INC_PATH . 'core/class-spin-wheel.php';
+		require_once USPIN_WHEEL_INC_PATH . 'core/class-reports.php';
+		require_once USPIN_WHEEL_INC_PATH . 'core/class-entries.php';
+		require_once USPIN_WHEEL_INC_PATH . 'core/class-settings.php';
+		require_once USPIN_WHEEL_INC_PATH . 'core/class-campaigns.php';
+
+		// AI Chat and Integrations are PRO features
+		// Load from pro plugin if active and files exist
+		$pro_integrations_path = defined( 'USPW_PRO_INTEGRATIONS_PATH' ) ? USPW_PRO_INTEGRATIONS_PATH : '';
+
+		if ( $pro_integrations_path ) {
+			if ( file_exists( $pro_integrations_path . 'class-ai-chat.php' ) ) {
+				require_once $pro_integrations_path . 'class-ai-chat.php';
+			}
+			if ( file_exists( $pro_integrations_path . 'class-integrations.php' ) ) {
+				require_once $pro_integrations_path . 'class-integrations.php';
+			}
+		}
+
+		\USPIN_WHEEL\Includes\Core\Settings::instance();
+		\USPIN_WHEEL\Includes\Core\Spin_Wheel::instance();
+
+		// Initialize admin handlers
+		if ( is_admin() ) {
+			\USPIN_WHEEL\Includes\Core\Reports::instance();
+			\USPIN_WHEEL\Includes\Core\Entries::instance();
+			\USPIN_WHEEL\Includes\Core\Campaigns::instance();
+		}
+
+		$spin_wheel = new \USPIN_WHEEL\Includes\Core\Post_Type();
 		$spin_wheel->get_instance();
 
 		/**

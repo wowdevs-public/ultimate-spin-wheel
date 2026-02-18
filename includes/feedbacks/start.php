@@ -12,7 +12,7 @@ if ( ! function_exists( 'rc_dynamic_init' ) ) {
 
 		if ( is_admin() ) :
 
-			$menu_slug    = isset( $params['menu']['slug'] ) ? $params['menu']['slug'] : false;
+			$menu_slug = isset( $params['menu']['slug'] ) ? $params['menu']['slug'] : false;
       // phpcs:ignore
 			$current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : false;
 
@@ -25,7 +25,7 @@ if ( ! function_exists( 'rc_dynamic_init' ) ) {
 			/**
 			 * Include SDK
 			 */
-			require_once dirname( __FILE__ ) . '/notice.php';
+			require_once __DIR__ . '/notice.php';
 			if ( function_exists( 'rc_sdk_automate' ) ) {
 				rc_sdk_automate( $params );
 			}

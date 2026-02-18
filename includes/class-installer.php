@@ -15,6 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Installer class
  */
 class Installer {
+
+
+
 	/**
 	 * Runt the installer
 	 *
@@ -49,16 +52,44 @@ class Installer {
 			`id` INT(11) NOT NULL AUTO_INCREMENT,
 			`name` VARCHAR(255) DEFAULT NULL,
 			`email` VARCHAR(255) NULL DEFAULT NULL COMMENT 'Empty Email for Logs',
-      `campaign_type` VARCHAR(255) NULL DEFAULT NULL,
-      `campaign_id` BIGINT(20) NULL DEFAULT NULL,
-      `campaign_title` VARCHAR(255) NULL DEFAULT NULL,
-      `others_data` LONGTEXT NULL DEFAULT NULL COMMENT 'JSON DATA',
-      `user_data` LONGTEXT NULL DEFAULT NULL COMMENT 'JSON DATA',
+			`phone` VARCHAR(255) NULL DEFAULT NULL,
+			`campaign_type` VARCHAR(255) NULL DEFAULT NULL,
+			`campaign_id` BIGINT(20) NULL DEFAULT NULL,
+			`campaign_title` VARCHAR(255) NULL DEFAULT NULL,
+			`others_data` LONGTEXT NULL DEFAULT NULL COMMENT 'JSON DATA',
+			`user_data` LONGTEXT NULL DEFAULT NULL COMMENT 'JSON DATA',
 			`optin` VARCHAR(1) NULL DEFAULT NULL COMMENT 'Y = Yes, N = No',
-      `status` VARCHAR(255) NULL DEFAULT NULL,
+			`status` LONGTEXT NULL DEFAULT NULL COMMENT 'JSON DATA: stage, updated_at, history',
+			`integration_logs` LONGTEXT NULL DEFAULT NULL COMMENT 'JSON DATA',
 			`created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 			PRIMARY KEY (`id`)
 		) $charset_collate";
+
+		/**
+		 * If phone column not exist then add it
+		 *
+		 * @since 1.0.5
+		 */
+
+		//phpcs:ignore
+		$column = $wpdb->get_results("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = '" . DB_NAME . "' AND TABLE_NAME = '{$wpdb->prefix}wdengage_entries' AND COLUMN_NAME = 'phone'");
+
+		if ( empty( $column ) ) {
+			$wpdb->query( "ALTER TABLE `{$wpdb->prefix}wdengage_entries` ADD `phone` VARCHAR(255) NULL DEFAULT NULL COMMENT 'Empty Email for Logs' AFTER `email`;" );
+		}
+
+		/**
+		 * Update status column to LONGTEXT if it's currently VARCHAR
+		 */
+		if ( ! empty( $status_column ) && strtolower( $status_column[0]->DATA_TYPE ) !== 'longtext' ) {
+			$wpdb->query( "ALTER TABLE `{$wpdb->prefix}wdengage_entries` MODIFY `status` LONGTEXT DEFAULT NULL" );
+		}
+
+		$integration_column = $wpdb->get_results( "SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = '" . DB_NAME . "' AND TABLE_NAME = '{$wpdb->prefix}wdengage_entries' AND COLUMN_NAME = 'integration_logs'" );
+
+		if ( empty( $integration_column ) ) {
+			$wpdb->query( "ALTER TABLE `{$wpdb->prefix}wdengage_entries` ADD `integration_logs` LONGTEXT NULL DEFAULT NULL COMMENT 'JSON DATA' AFTER `status`;" );
+		}
 
 		if ( ! function_exists( 'dbDelta' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/upgrade.php';

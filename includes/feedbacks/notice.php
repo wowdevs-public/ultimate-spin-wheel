@@ -43,8 +43,8 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 			$this->review_url = isset( $params['review_url'] ) ? $params['review_url'] : false;
 
 			// add_action( 'admin_enqueue_scripts', array( $this, 'rc_enqueue_scripts' ) );
-			add_action( 'wp_ajax_rc_sdk_insights', array( $this, 'rc_sdk_insights' ) );
-			add_action( 'wp_ajax_rc_sdk_dismiss_notice', array( $this, 'rc_sdk_dismiss_notice' ) );
+			add_action( 'wp_ajax_rc_sdk_insights', [ $this, 'rc_sdk_insights' ] );
+			add_action( 'wp_ajax_rc_sdk_dismiss_notice', [ $this, 'rc_sdk_dismiss_notice' ] );
 
 			$security_key        = md5( $params['plugin_name'] );
 			$this->rc_name       = 'rc_' . str_replace( '-', '_', sanitize_title( $params['plugin_name'] ) . '_' . $security_key );
@@ -83,7 +83,7 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 			/**
 			 * If Disallow
 			 */
-			if ( 'disallow' == $rc_status_db ) {
+			if ( 'disallow' === $rc_status_db ) {
 				return;
 			}
 
@@ -91,7 +91,7 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 			 * Skip & Date Not Expired
 			 * Show Notice
 			 */
-			if ( 'skip' == $rc_status_db && true == $this->check_date() ) {
+			if ( 'skip' === $rc_status_db && true === $this->check_date() ) {
 				$this->display_notice();
 				return;
 			}
@@ -122,10 +122,10 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 		 * @return void
 		 */
 		public function display_notice() {
-			add_action( 'admin_enqueue_scripts', array( $this, 'rc_enqueue_scripts' ) );
+			add_action( 'admin_enqueue_scripts', [ $this, 'rc_enqueue_scripts' ] );
 
 			if ( ! get_transient( 'dismissed_notice_' . $this->rc_name ) ) {
-				add_action( 'admin_notices', array( $this, 'display_global_notice' ) );
+				add_action( 'admin_notices', [ $this, 'display_global_notice' ] );
 			}
 		}
 
@@ -168,43 +168,43 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 			$date_name        = isset( $_POST['date_name'] ) ? sanitize_text_field( wp_unslash( $_POST['date_name'] ) ) : '';
 
 			if ( ! wp_verify_nonce( $nonce, 'rc_sdk' ) ) {
-				wp_send_json( array(
+				wp_send_json( [
 					'status'  => 'error',
 					'title'   => 'Error',
 					'message' => 'Nonce verification failed',
-				) );
+				] );
 				wp_die();
 			}
 
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_send_json(array(
+				wp_send_json([
 					'status'  => 'error',
 					'title'   => 'Error',
 					'message' => 'Denied, you don\'t have right permission',
-				));
+				]);
 				wp_die();
 			}
 
-			if ( 'disallow' == $sanitized_status ) {
+			if ( 'disallow' === $sanitized_status ) {
 				update_option( $allow_name, 'disallow' );
 			}
 
-			if ( $sanitized_status == 'skip' ) {
+			if ( $sanitized_status === 'skip' ) {
 				update_option( $allow_name, 'skip' );
 				/**
 				 * Next schedule date for attempt
 				 */
 				update_option( $date_name, gmdate( 'Y-m-d', strtotime( '+1 month' ) ) );
-			} elseif ( $sanitized_status == 'yes' ) {
+			} elseif ( $sanitized_status === 'yes' ) {
 				update_option( $allow_name, 'yes' );
 			}
 
-			wp_send_json( array(
+			wp_send_json( [
 				'status'  => 'success',
 				'title'   => 'Success',
 				'message' => 'Success.',
 				'action'  => $sanitized_status,
-			) );
+			] );
 			wp_die();
 		}
 
@@ -215,7 +215,7 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 		 */
 		public function rc_enqueue_scripts() {
 			// wp_enqueue_style( 'rc-sdk', plugins_url( 'assets/rc.css', __FILE__ ), array(), '1.0.0' );
-			wp_register_script( 'rc-sdk', plugins_url( 'assets/rc.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
+			wp_register_script( 'rc-sdk', plugins_url( 'assets/rc.js', __FILE__ ), [ 'jquery' ], '1.0.0', true );
 			wp_enqueue_script( 'rc-sdk' );
 		}
 
@@ -287,30 +287,30 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 			$rc_name = isset( $_POST['rc_name'] ) ? sanitize_text_field( wp_unslash( $_POST['rc_name'] ) ) : '';
 
 			if ( ! wp_verify_nonce( $nonce, 'rc_sdk' ) ) {
-				wp_send_json( array(
+				wp_send_json( [
 					'status'  => 'error',
 					'title'   => 'Error',
 					'message' => 'Nonce verification failed',
-				) );
+				] );
 				wp_die();
 			}
 
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_send_json(array(
+				wp_send_json([
 					'status'  => 'error',
 					'title'   => 'Error',
 					'message' => 'Denied, you don\'t have right permission',
-				));
+				]);
 				wp_die();
 			}
 
 			set_transient( 'dismissed_notice_' . $rc_name, true, 30 * DAY_IN_SECONDS );
 
-			wp_send_json( array(
+			wp_send_json( [
 				'status'  => 'success',
 				'title'   => 'Success',
 				'message' => 'Success.',
-			) );
+			] );
 			wp_die();
 		}
 	}

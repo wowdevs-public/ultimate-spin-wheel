@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name:       Ultimate Spin Wheel - Gamify Your Store & Boost Sales
- * Plugin URI:        https://wowdevs.com/plugins/ultimate-spin-wheel
+ * Plugin URI:        https://wowdevs.com/plugins/spin-wheel
  * Description:       The Ultimate Spin Wheel plugin allows you to engage your visitors with an interactive cart that offers coupons and other rewards, seamlessly integrated with WooCommerce.
- * Version:           1.0.4
+ * Version:           2.0.2
  * Requires at least: 6.1
  * Requires PHP:      7.4
  * Author:            wowDevs
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-define( 'USPIN_WHEEL_VERSION', '1.0.4' );
+define( 'USPIN_WHEEL_VERSION', '2.0.2' );
 
 define( 'USPIN_WHEEL_NAME', 'Spin Wheel' );
 define( 'USPIN_WHEEL_SLUG', 'ultimate-spin-wheel' );
@@ -34,8 +34,7 @@ define( 'USPIN_WHEEL_SLUG', 'ultimate-spin-wheel' );
 define( 'USPIN_WHEEL__FILE__', __FILE__ );
 define( 'USPIN_WHEEL_PATH', plugin_dir_path( USPIN_WHEEL__FILE__ ) );
 define( 'USPIN_WHEEL_INCLUDES', USPIN_WHEEL_PATH . 'includes/' );
-define( 'USPIN_WHEEL_MODULES_PATH', USPIN_WHEEL_PATH . 'modules/' );
-define( 'USPIN_WHEEL_URL', plugins_url( '/', USPIN_WHEEL__FILE__ ) );
+define( 'USPIN_WHEEL_URL', plugin_dir_url( USPIN_WHEEL__FILE__ ) );
 define( 'USPIN_WHEEL_PATH_NAME', basename( dirname( USPIN_WHEEL__FILE__ ) ) );
 define( 'USPIN_WHEEL_INC_PATH', USPIN_WHEEL_PATH . 'includes/' );
 define( 'USPIN_WHEEL_ASSETS_URL', USPIN_WHEEL_URL . 'assets/' );
@@ -155,11 +154,11 @@ if ( ! function_exists( 'ultimate_spin_wheel_dci_plugin' ) ) {
 		// Include DCI SDK.
 		require_once __DIR__ . '/dci/start.php';
 
-		wp_register_style( 'dci-sdk-ultimate-spin-wheel', USPIN_WHEEL_URL . 'dci/assets/css/dci.css', array(), '1.3.0', 'all' );
+		wp_register_style( 'dci-sdk-ultimate-spin-wheel', USPIN_WHEEL_URL . 'dci/assets/css/dci.css', [], '1.3.0', 'all' );
 		wp_enqueue_style( 'dci-sdk-ultimate-spin-wheel' );
 
 		dci_dynamic_init(
-			array(
+			[
 				'sdk_version'          => '1.2.1',
 				'product_id'           => 6,
 				'plugin_name'          => 'Ultimate Spin Wheel', // make simple, must not empty
@@ -169,9 +168,9 @@ if ( ! function_exists( 'ultimate_spin_wheel_dci_plugin' ) ) {
 				'slug'                 => 'ultimate-spin-wheel',
 				'core_file'            => false,
 				'plugin_deactivate_id' => false,
-				'menu'                 => array(
+				'menu' => [
 					'slug' => 'ultimate-spin-wheel',
-				),
+				],
 				'public_key'           => 'pk_ThVNbRDOgEuRd9JkQK1YGgmaDnXQAlkf',
 				'is_premium'           => false,
 				'popup_notice'         => false,
@@ -181,7 +180,7 @@ if ( ! function_exists( 'ultimate_spin_wheel_dci_plugin' ) ) {
 				// ),
 				'text_domain'          => 'ultimate-spin-wheel',
 				'plugin_msg'           => '<p>Be Top-contributor by sharing non-sensitive plugin data and create an impact to the global WordPress community today! You can receive valuable emails periodically.</p>',
-			)
+			]
 		);
 	}
 	add_action( 'admin_init', 'ultimate_spin_wheel_dci_plugin' );
@@ -197,22 +196,22 @@ if ( ! function_exists( 'ultimate_spin_wheel_rc_plugin' ) ) {
 
 		require_once USPIN_WHEEL_PATH . 'includes/feedbacks/start.php';
 
-		wp_register_style( 'rc-sdk-ultimate-spin-wheel', USPIN_WHEEL_URL . 'includes/feedbacks/assets/rc.css', array(), '1.0.0', 'all' );
+		wp_register_style( 'rc-sdk-ultimate-spin-wheel', USPIN_WHEEL_URL . 'includes/feedbacks/assets/rc.css', [], '1.0.0', 'all' );
 		wp_enqueue_style( 'rc-sdk-ultimate-spin-wheel' );
 
 		rc_dynamic_init(
-			array(
+			[
 				'sdk_version'  => '1.0.0',
 				'plugin_name'  => 'Ultimate Spin Wheel',
 				'plugin_icon'  => USPIN_WHEEL_ASSETS_URL . 'images/logo.png',
 				'slug'         => 'ultimate-spin-wheel',
-				'menu'         => array(
+				'menu' => [
 					'slug' => 'ultimate-spin-wheel',
-				),
+				],
 				'review_url'   => 'https://wordpress.org/support/plugin/ultimate-spin-wheel/reviews/#new-post',
 				'plugin_title' => 'Yay! Great that you\'re using Ultimate Spin Wheel',
 				'plugin_msg'   => '<p>Loved using Ultimate Spin Wheel on your website? Share your experience in a review and help us spread the love to everyone right now. Good words will help the community.</p>',
-			)
+			]
 		);
 	}
 	add_action( 'admin_init', 'ultimate_spin_wheel_rc_plugin' );

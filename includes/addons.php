@@ -9,12 +9,12 @@ defined( 'ABSPATH' ) || exit;
  */
 class Addons {
 
-	const WIDGETS_DB_KEY = 'ultimate_spin_wheel_inactive_addons';
+	const WIDGETS_DB_KEY           = 'ultimate_spin_wheel_inactive_addons';
 	const WIDGETS_3RD_PARTY_DB_KEY = 'ultimate_spin_wheel_inactive_3rd_party_widgets';
-	const EXTENSIONS_DB_KEY = 'ultimate_spin_wheel_inactive_extensions';
-	const API_DB_KEY = 'ultimate_spin_wheel_api';
+	const EXTENSIONS_DB_KEY        = 'ultimate_spin_wheel_inactive_extensions';
+	const API_DB_KEY               = 'ultimate_spin_wheel_api';
 
-	public static $widget_list = null;
+	public static $widget_list  = null;
 	public static $widgets_name = null;
 
 	public static function get_inactive_widgets() {
@@ -48,7 +48,7 @@ class Addons {
 	public static function get_element_list() {
 
 		$inactive_widgets = self::get_inactive_widgets();
-		$saved_api = self::get_saved_api();
+		$saved_api        = self::get_saved_api();
 
 		$widgets_fields = [
 			'addons' => [

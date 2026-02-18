@@ -1,17 +1,15 @@
-= 1.0.3 [13th Aug 2025] =
+= 2.0.0 [4th February 2026] =
+*   **New Feature:** Added stunning new Premium Themes (Neon, Gold, Seasonal) for high-converting designs.
+*   **New Feature:** Introduced AI Assistant for specific campaigns to provide smart insights and optimization tips.
+*   **New Feature:** Added "Leads" management system to view and manage captured emails and data directly from the dashboard.
+*   **New Feature:** Implemented "Smart Auto-Coupons" logic for Pro users - automatically generates single-use coupons for winners.
+*   **Enhanced:** Complete UI/UX overhaul for the admin dashboard with a modern, darker aesthetic and better navigation.
+*   **Enhanced:** Improved License Activation system with a dynamic "Get Pro" upgrade path and 30% discount promotion.
+*   **Enhanced:** Refined Pro feature gating (Exit Intent, Scroll Trigger, Phone Field) with clearer "Pro" badges and upgrade prompts.
+*   **Enhanced:** Security improvements including nonce verification on all AJAX actions and better input sanitization.
+*   **Fixed:** Resolved issue where certain Pro AJAX calls were firing without the Pro plugin active.
+*   **Fixed:** Celebration sound URL issue causing playback errors on some servers.
+*   **Fixed:** Responsive design issues on smaller mobile devices for the spin wheel popup.
 
-🎉 **Major Release - Feature-Packed Launch**
-
-**New Features:**
-* ✨ Complete wheel builder with unlimited customization
-* 🎯 Advanced targeting and trigger systems  
-* 📧 Built-in email capture with CSV export
-* 📊 Comprehensive analytics dashboard
-* 🎨 Professional design templates
-* 📱 Mobile-first responsive design
-* 🛡️ GDPR compliance tools
-* 🎪 Gamification psychology features
-* ⚡ Lightning-fast performance optimization
-* 🌐 Cross-browser compatibility
-* 🛡️ Anti-spam protection
-* 🎨 Multi-wheel campaigns
+= 1.0.0 [20th September 2025] =
+*   **Initial Release:** Powerful spin wheel for WooCommerce.

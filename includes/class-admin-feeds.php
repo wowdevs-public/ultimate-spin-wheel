@@ -68,19 +68,19 @@ class Admin_Feeds {
 	 */
 	private function get_remote_feeds_data() {
 		$transient_key = $this->settings['transient_key'];
-		$cached_data = get_transient( $transient_key );
+		$cached_data   = get_transient( $transient_key );
 
 		if ( ! empty( $cached_data ) ) {
 			return json_decode( $cached_data );
 		}
 
 		$response = wp_remote_get( $this->settings['remote_feed_link'],
-			array(
+			[
 				'timeout' => 30,
-				'headers' => array(
+				'headers' => [
 					'Accept' => 'application/json',
-				),
-			)
+				],
+			]
 		);
 
 		if ( is_wp_error( $response ) ) {
@@ -100,7 +100,7 @@ class Admin_Feeds {
 	 */
 	private function get_rss_posts_data() {
 		$transient_key = $this->settings['transient_key'] . '_rss';
-		$cached_data = get_transient( $transient_key );
+		$cached_data   = get_transient( $transient_key );
 
 		if ( ! empty( $cached_data ) ) {
 			$rss_items = json_decode( $cached_data, true ); // Decode as associative array
@@ -113,7 +113,7 @@ class Admin_Feeds {
 				return '<li>' . esc_html__( 'Items Not Found', 'ultimate-spin-wheel' ) . '.</li>';
 			}
 
-			$maxitems = $rss->get_item_quantity( 5 );
+			$maxitems  = $rss->get_item_quantity( 5 );
 			$rss_items = $rss->get_items( 0, $maxitems );
 
 			// Convert RSS items to a simpler array to avoid serialization issues
@@ -174,7 +174,7 @@ class Admin_Feeds {
 	}
 }
 
-$settings = array(
+$settings = [
 	'feed_title'       => 'wowDevs News & Updates',
 	'transient_key'    => 'wowdevs_feeds',
 	'feed_link'        => 'https://wowdevs.com/feed',
@@ -190,7 +190,7 @@ $settings = array(
 			'title' => 'Docs',
 		],
 		[
-			'url'   => 'https://wowdevs.com/ultimate-spin-wheel/',
+			'url'   => 'https://wowdevs.com/plugins/spin-wheel/',
 			'title' => 'Get Pro',
 		],
 		[
@@ -198,6 +198,6 @@ $settings = array(
 			'title' => 'Get Support',
 		],
 	],
-);
+];
 
 new Admin_Feeds( $settings );
