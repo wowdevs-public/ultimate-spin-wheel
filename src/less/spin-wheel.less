@@ -1,0 +1,718 @@
+/**************************\
+  Basic Modal Styles
+\**************************/
+
+.modal {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.modal__container {
+  background: var(--uspw-popup-bg, #fff);
+  padding: var(--uspw-popup-padding, 30px);
+  width: 100%;
+  max-width: var(--uspw-popup-max-width, 800px);
+  max-height: 100vh;
+  border-radius: var(--uspw-popup-border-radius, 4px);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: #00449e;
+  box-sizing: border-box;
+}
+
+.modal__close {
+  background: transparent;
+  border: 0;
+}
+
+.modal__header .modal__close:before {
+  content: "\2715";
+}
+
+.modal__content {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, .8);
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.modal__btn {
+  font-size: .875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  background-color: #e6e6e6;
+  color: rgba(0, 0, 0, .8);
+  border-radius: .25rem;
+  border-style: none;
+  border-width: 0;
+  cursor: pointer;
+  -webkit-appearance: button;
+  text-transform: none;
+  overflow: visible;
+  line-height: 1.15;
+  margin: 0;
+  will-change: transform;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition: -webkit-transform .25s ease-out;
+  transition: transform .25s ease-out;
+  transition: transform .25s ease-out, -webkit-transform .25s ease-out;
+}
+
+.modal__btn:focus,
+.modal__btn:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.modal__btn-primary {
+  background-color: #00449e;
+  color: #fff;
+}
+
+
+
+/**************************\
+  Demo Animation Style
+\**************************/
+@keyframes mmfadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mmfadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes mmslideIn {
+  from {
+    transform: translateY(15%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes mmslideOut {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-10%);
+  }
+}
+
+.micromodal-slide {
+  display: none;
+}
+
+.micromodal-slide.is-open {
+  display: block;
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+  animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+  animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
+  will-change: transform;
+}
+
+.ultimate-spin-wheel {
+
+  // Reset all typography and box model to prevent theme interference
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .modal__container {
+    padding: var(--uspw-popup-padding, 20px);
+    border-radius: var(--uspw-popup-border-radius, 12px);
+    background: var(--uspw-popup-bg, #fff);
+    max-width: var(--uspw-popup-max-width, 800px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 10;
+  }
+
+  .modal__close {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--uspw-close-bg, linear-gradient(135deg, #f093fb 0%, #f5576c 100%));
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+
+    // Create X icon with pseudo-elements
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background-color: var(--uspw-close-color, #ffffff);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover {
+      transform: scale(1.1) rotate(90deg);
+    }
+
+    &:active {
+      transform: scale(0.95) rotate(90deg);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .modal__content {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  .uspw-spin-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50%;
+    // padding: 10px;
+
+    // The actual wheel div
+    [id^="uspw-wheel-"] {
+      width: 340px;
+      height: 340px;
+      max-width: 100%;
+      margin: 0 auto;
+
+      @media (max-width: 767px) {
+        width: 80vw;
+        height: 80vw;
+        max-width: 90vw; // Ensure it doesn't hit screen edges
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 767px) {
+      padding: 0;
+      min-width: 100%;
+    }
+  }
+
+  // Modal container styles are now handled via CSS variables
+
+
+
+}
+
+// Import form styles
+@import 'form-styles.less';
+
+// Responsive adjustments
+@media (max-width: 767px) {
+  .ultimate-spin-wheel {
+    .modal__container {
+      max-width: 95%;
+      padding: 20px;
+    }
+  }
+}
+
+/**************************\
+  Result Modal Styles
+\**************************/
+.uspw-result-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100000;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.uspw-result-modal.is-open {
+  display: flex;
+}
+
+.uspw-result-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+.uspw-result-container {
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: uspw-popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+/* Animations */
+@keyframes uspw-popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Content Styles */
+.uspw-result-header {
+  font-size: 28px;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.uspw-result-subheader {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.uspw-prize-highlight {
+  font-size: 24px;
+  font-weight: 700;
+  color: #e74c3c;
+  margin: 10px 0;
+}
+
+.uspw-coupon-box {
+  background: #fdfdfd;
+  border: 2px dashed #e2e8f0;
+  border-radius: 12px;
+  margin: 24px auto;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 320px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &:hover {
+    background: #ffffff;
+    border-color: #4f46e5;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px -5px rgba(79, 70, 229, 0.1), 0 8px 10px -6px rgba(79, 70, 229, 0.1);
+
+    .uspw-copy-indicator {
+      transform: scale(1.1);
+      color: #4f46e5;
+    }
+
+    .uspw-coupon-label {
+      background: #4f46e5;
+      color: #ffffff;
+      border-top-color: #4f46e5;
+    }
+  }
+
+  .uspw-coupon-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 24px 20px;
+  }
+
+  .uspw-coupon-code {
+    font-family: 'Courier New', Monaco, monospace;
+    font-size: 32px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: 3px;
+    line-height: 1;
+  }
+
+  .uspw-copy-indicator {
+    color: #cbd5e1;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .uspw-coupon-label {
+    display: block;
+    width: 100%;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #64748b;
+    padding: 10px 0;
+    background: #f8fafc;
+    border-top: 1px dashed #e2e8f0;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+  }
+}
+
+.uspw-result-btn {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: 10px;
+}
+
+.uspw-result-btn:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+.uspw-close-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background: var(--uspw-close-bg, #f1f5f9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1001;
+  text-decoration: none;
+}
+
+.uspw-close-icon:hover {
+  background: #e2e8f0;
+  transform: rotate(90deg) scale(1.1);
+  opacity: 1;
+}
+
+.uspw-close-icon:before,
+.uspw-close-icon:after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 2px;
+  background-color: var(--uspw-close-color, #64748b);
+  border-radius: 2px;
+  transition: background-color 0.3s;
+}
+
+.uspw-close-icon:hover:before,
+.uspw-close-icon:hover:after {
+  background-color: #0f172a;
+}
+
+.uspw-close-icon:before {
+  transform: rotate(45deg);
+}
+
+.uspw-close-icon:after {
+  transform: rotate(-45deg);
+}
+
+/* Confetti Canvas */
+.uspw-confetti-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/**************************\
+  Already Played Inline Styles
+\**************************/
+.uspw-already-played-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  width: 100%;
+  animation: uspw-popIn 0.5s ease;
+
+  .uspw-already-played-icon {
+    margin-bottom: 20px;
+    color: #f97316; // Orange 500
+
+    svg {
+      filter: drop-shadow(0 4px 6px rgba(249, 115, 22, 0.2));
+    }
+  }
+
+  .uspw-already-played-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+  }
+
+  .uspw-already-played-msg {
+    font-size: 16px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 300px;
+  }
+
+  // Countdown Timer Container
+  .uspw-countdown {
+    margin-bottom: 24px;
+    animation: uspw-fadeIn 0.5s ease;
+  }
+
+  .uspw-countdown-title {
+    color: #f59e0b;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .uspw-countdown-boxes {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .uspw-countdown-box {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-radius: 8px;
+    padding: 10px 14px;
+    min-width: 54px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  .uspw-countdown-value {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Courier New', Monaco, monospace;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .uspw-countdown-label {
+    color: #94a3b8;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+  }
+
+  .uspw-countdown-separator {
+    color: #64748b;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1;
+    animation: uspw-blink 1s infinite;
+  }
+
+  // Countdown Complete Message
+  .uspw-countdown-complete {
+    margin-bottom: 24px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    animation: uspw-popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    span {
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+    }
+  }
+
+  // Legacy timer styles (keep for backward compatibility)
+  .uspw-already-played-timer {
+    background: #fff7ed;
+    border: 1px solid #ffedd5;
+    padding: 12px 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .uspw-timer-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #9a3412;
+    }
+
+    .uspw-timer-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #7c2d12;
+    }
+  }
+
+  // Blink animation for separator
+  @keyframes uspw-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @keyframes uspw-fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .uspw-close-inline-btn {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
