@@ -233,6 +233,44 @@ class Entries {
 			}
 		}
 
+		// One scoped IN(emails) query to get all spins for users on this page.
+		// Bounded by per_page (max 20 emails) — no per-row queries, no loops.
+		$page_emails = array_values( array_filter( array_unique( array_column( $entries, 'email' ) ) ) );
+		$history_map = []; // keyed by email => [ spin rows ]
+
+		if ( ! empty( $page_emails ) ) {
+			$placeholders = implode( ',', array_fill( 0, count( $page_emails ), '%s' ) );
+			// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
+			$all_spins = $wpdb->get_results(
+				$wpdb->prepare(
+					"SELECT id, email, campaign_id, campaign_title, others_data, created_at FROM {$wpdb->prefix}wdengage_entries WHERE email IN ($placeholders) ORDER BY created_at DESC",
+					$page_emails
+				)
+			);
+
+			foreach ( $all_spins as $spin ) {
+				if ( ! isset( $history_map[ $spin->email ] ) ) {
+					$history_map[ $spin->email ] = [];
+				}
+				// Format date
+				$spin->created_at_formatted = '-';
+				if ( ! empty( $spin->created_at ) ) {
+					$ts                         = strtotime( $spin->created_at . ' UTC' );
+					$spin->created_at_formatted = wp_date( $wp_format, $ts );
+				}
+				$history_map[ $spin->email ][] = $spin;
+			}
+		}
+
+		// Attach spin_count and spin_history to each entry (exclude current entry from its own history).
+		foreach ( $entries as $entry ) {
+			$all_for_email        = $history_map[ $entry->email ] ?? [];
+			$entry->spin_count    = count( $all_for_email );
+			$entry->spin_history  = array_values(
+				array_filter( $all_for_email, fn( $s ) => (int) $s->id !== (int) $entry->id )
+			);
+		}
+
 		$result = [
 			'entries'      => $entries,
 			'total'        => intval( $total ),

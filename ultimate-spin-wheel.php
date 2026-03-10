@@ -3,7 +3,7 @@
  * Plugin Name:       Ultimate Spin Wheel - Gamify Your Store & Boost Sales
  * Plugin URI:        https://wowdevs.com/plugins/spin-wheel
  * Description:       The Ultimate Spin Wheel plugin allows you to engage your visitors with an interactive cart that offers coupons and other rewards, seamlessly integrated with WooCommerce.
- * Version:           2.0.2
+ * Version:           2.0.4
  * Requires at least: 6.1
  * Requires PHP:      7.4
  * Author:            wowDevs
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-define( 'USPIN_WHEEL_VERSION', '2.0.2' );
+define( 'USPIN_WHEEL_VERSION', '2.0.4' );
 
 define( 'USPIN_WHEEL_NAME', 'Spin Wheel' );
 define( 'USPIN_WHEEL_SLUG', 'ultimate-spin-wheel' );

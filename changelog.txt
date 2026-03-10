@@ -1,15 +1,52 @@
-= 2.0.0 [4th February 2026] =
-*   **New Feature:** Added stunning new Premium Themes (Neon, Gold, Seasonal) for high-converting designs.
-*   **New Feature:** Introduced AI Assistant for specific campaigns to provide smart insights and optimization tips.
-*   **New Feature:** Added "Leads" management system to view and manage captured emails and data directly from the dashboard.
-*   **New Feature:** Implemented "Smart Auto-Coupons" logic for Pro users - automatically generates single-use coupons for winners.
-*   **Enhanced:** Complete UI/UX overhaul for the admin dashboard with a modern, darker aesthetic and better navigation.
-*   **Enhanced:** Improved License Activation system with a dynamic "Get Pro" upgrade path and 30% discount promotion.
-*   **Enhanced:** Refined Pro feature gating (Exit Intent, Scroll Trigger, Phone Field) with clearer "Pro" badges and upgrade prompts.
-*   **Enhanced:** Security improvements including nonce verification on all AJAX actions and better input sanitization.
-*   **Fixed:** Resolved issue where certain Pro AJAX calls were firing without the Pro plugin active.
-*   **Fixed:** Celebration sound URL issue causing playback errors on some servers.
-*   **Fixed:** Responsive design issues on smaller mobile devices for the spin wheel popup.
+== Changelog ==
 
-= 1.0.0 [20th September 2025] =
-*   **Initial Release:** Powerful spin wheel for WooCommerce.
+= 2.0.4 [10th March 2026] =
+*   **New:** Auto Generate Coupon type (Pro) — unique code per winner, no WooCommerce needed
+*   **New:** WC Dynamic — Numeric Only toggle for digit-only coupon codes
+*   **New:** WC Dynamic — configurable Code Length (4–16 chars)
+*   **New:** Entries — Spin Count badge (↺ N×) shows real all-time spin total per user
+*   **New:** Entries — Spin History panel in expanded row shows all previous spins across campaigns & pages
+*   **Improved:** Code Prefix is optional; no auto-hyphen added
+*   **Fixed:** Long coupon codes now wrap correctly in the win modal
+
+= 2.0.3 [27th February 2026] =
+*   **Improved:** Outcome Redirect URL improved
+*   **Improved:** Countdown Timer improved
+
+= 2.0.2 [17th February 2026] =
+*   **Fixed:** Critical security vulnerability resolved
+*   **Fixed:** Pattern Overlay display issue
+
+= 2.0.0 [4th February 2026] =
+*   **Major Update:** Complete New System Rewrite (v2.0)
+*   **New Feature:** Added 10+ Premium Themes (Midnight Royalty, Neon, etc.)
+*   **New Feature:** AI Assistant for smart campaign insights
+*   **New Feature:** Leads Management Dashboard
+*   **New Feature:** Smart Auto-Coupons & Auto-Apply logic
+*   **Improved:** Modern Dark-Mode Admin UI/UX
+*   **Improved:** License Activation & Upgrade path
+*   **Improved:** Exit Intent & Scroll Trigger logic (Pro)
+*   **Improved:** Security (Nonce verification & Sanitization)
+*   **Fixed:** Mobile responsiveness and sound playback issues
+
+= 1.0.5 [20th January 2026] =
+* Added: Complete system improvements
+* Added: Phone number field in leads export (Thanks to Joy)
+
+= 1.0.4 [1st November 2025] =
+* Improved: Complete system improvements
+
+= 1.0.3 [13th August 2025] =
+*   **Initial Release:** Ultimate Spin Wheel
+* Added: Complete wheel builder with unlimited customization
+* Added: Advanced targeting and trigger systems
+* Added: Built-in email capture with CSV export
+* Added: Comprehensive analytics dashboard
+* Added: Professional design templates
+* Added: Mobile-first responsive design
+* Added: GDPR compliance tools
+* Added: Gamification psychology features
+* Added: Lightning-fast performance optimization
+* Added: Cross-browser compatibility
+* Added: Anti-spam protection
+* Added: Multi-wheel campaigns

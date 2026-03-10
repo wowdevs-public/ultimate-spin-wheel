@@ -2,7 +2,7 @@
 Contributors: wowdevs, bdkoder
 Donate link: https://wowdevs.com/plugins/spin-wheel
 Tags: spin wheel, coupon wheel, discount wheel, WooCommerce, prize wheel
-Stable tag: 2.0.2
+Stable tag: 2.0.4
 Requires PHP: 7.4
 Requires at least: 6.1
 Tested up to: 6.9
@@ -187,6 +187,19 @@ Development happens on GitHub:
 [https://github.com/wowdevs-public/ultimate-spin-wheel/](https://github.com/wowdevs-public/ultimate-spin-wheel/)
 
 == Changelog ==
+
+= 2.0.4 [10th March 2026] =
+*   **New:** Auto Generate Coupon type (Pro) — unique code per winner, no WooCommerce needed
+*   **New:** WC Dynamic — Numeric Only toggle for digit-only coupon codes
+*   **New:** WC Dynamic — configurable Code Length (4–16 chars)
+*   **New:** Entries — Spin Count badge (↺ N×) shows real all-time spin total per user
+*   **New:** Entries — Spin History panel in expanded row shows all previous spins across campaigns & pages
+*   **Improved:** Code Prefix is optional; no auto-hyphen added
+*   **Fixed:** Long coupon codes now wrap correctly in the win modal
+
+= 2.0.3 [27th February 2026] =
+*   **Improved:** Outcome Redirect URL improved
+*   **Improved:** Countdown Timer improved
 
 = 2.0.2 [17th February 2026] =
 *   **Fixed:** Critical security vulnerability resolved

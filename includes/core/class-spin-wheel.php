@@ -537,6 +537,14 @@ class Spin_Wheel {
 				}
 			}
 
+			// PRO FEATURE: Auto Generate Coupon
+			if ( isset( $prize['coupon_type'] ) && 'auto_generate' === $prize['coupon_type'] ) {
+				$is_pro = apply_filters( 'ultimate_spin_wheel_pro_init', false );
+				if ( ! $is_pro ) {
+					continue;
+				}
+			}
+
 			$probability = isset( $prize['probability'] ) ? floatval( $prize['probability'] ) : 0;
 			if ( $probability > 0 ) {
 				$total_weight     += $probability;
@@ -609,6 +617,21 @@ class Spin_Wheel {
 				} else {
 					// Fallback to static code if generation fails or Pro not active
 					$won_code = $selected_prize['code'] ?? '';
+				}
+			} elseif ( 'auto_generate' === $coupon_type ) {
+				/**
+				 * PRO FEATURE: Auto Generate Coupon
+				 * Generates a unique code per winner — no WooCommerce required.
+				 * Delegated to Pro plugin via filter.
+				 *
+				 * @param string|null $code           Default null.
+				 * @param array       $selected_prize The winning prize (includes 'auto' config).
+				 * @param string      $email          Winner's email.
+				 */
+				$generated_code = apply_filters( 'uspw_generate_auto_coupon', null, $selected_prize, isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '' );
+
+				if ( $generated_code ) {
+					$won_code = $generated_code;
 				}
 			} elseif ( ! empty( $selected_prize['is_unique'] ) ) {
 				$_raw_code = trim( $selected_prize['code'] ?? '' );

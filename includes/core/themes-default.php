@@ -205,7 +205,7 @@ $uspw_user_email = $settings['email'] ?? '';
 							<span>✓ <?php echo esc_html__( 'You can spin again!', 'ultimate-spin-wheel' ); ?></span>
 						</div>
 					
-						<button class="uspw-close-inline-btn" data-micromodal-close><?php echo esc_html__( 'Close', 'ultimate-spin-wheel' ); ?></button>
+						<!-- <button class="uspw-close-inline-btn" data-micromodal-close><?php //echo esc_html__( 'Close', 'ultimate-spin-wheel' ); ?></button> -->
 					</div>
 				</div>
 			</main>
