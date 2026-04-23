@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 2.0.5 [24th April 2026] =
+*   **New:** Entries — Device Info panel (IP, Browser/OS, Device ID) in expanded row — Pro only
+*   **Improved:** Entries — Spin History now matches by phone number as well as email
+*   **Fixed:** Entries — Phone-only entries now correctly show spin history
+
 = 2.0.4 [10th March 2026] =
 *   **New:** Auto Generate Coupon type (Pro) — unique code per winner, no WooCommerce needed
 *   **New:** WC Dynamic — Numeric Only toggle for digit-only coupon codes

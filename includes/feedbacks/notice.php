@@ -41,6 +41,7 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 		public function __construct( $params ) {
 			$this->params     = $params;
 			$this->review_url = isset( $params['review_url'] ) ? $params['review_url'] : false;
+			$this->version    = isset( $GLOBALS['_rc_sdk_version'] ) ? $GLOBALS['_rc_sdk_version'] : '1.0.1';
 
 			// add_action( 'admin_enqueue_scripts', array( $this, 'rc_enqueue_scripts' ) );
 			add_action( 'wp_ajax_rc_sdk_insights', [ $this, 'rc_sdk_insights' ] );
@@ -122,9 +123,17 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 		 * @return void
 		 */
 		public function display_notice() {
-			add_action( 'admin_enqueue_scripts', [ $this, 'rc_enqueue_scripts' ] );
+			/**
+			 * One notice per page load across ALL plugins using this feedbacks SDK.
+			 */
+			static $rc_notice_shown_this_request = false;
+			if ( $rc_notice_shown_this_request ) {
+				return;
+			}
 
 			if ( ! get_transient( 'dismissed_notice_' . $this->rc_name ) ) {
+				$rc_notice_shown_this_request = true; // Claim the slot
+				add_action( 'admin_enqueue_scripts', [ $this, 'rc_enqueue_scripts' ] );
 				add_action( 'admin_notices', [ $this, 'display_global_notice' ] );
 			}
 		}
@@ -214,9 +223,8 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 		 * @since 1.0.0
 		 */
 		public function rc_enqueue_scripts() {
-			// wp_enqueue_style( 'rc-sdk', plugins_url( 'assets/rc.css', __FILE__ ), array(), '1.0.0' );
-			wp_register_script( 'rc-sdk', plugins_url( 'assets/rc.js', __FILE__ ), [ 'jquery' ], '1.0.0', true );
-			wp_enqueue_script( 'rc-sdk' );
+			wp_enqueue_style( 'rc-sdk-wowdevs', plugins_url( 'assets/rc.css', __FILE__ ), [], $this->version );
+			wp_enqueue_script( 'rc-sdk-wowdevs', plugins_url( 'assets/rc.js', __FILE__ ), [ 'jquery' ], $this->version, true );
 		}
 
 		/**

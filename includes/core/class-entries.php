@@ -132,8 +132,9 @@ class Entries {
 		$where_values     = [];
 
 		if ( ! empty( $search ) ) {
-			$where_conditions[] = '(name LIKE %s OR email LIKE %s OR phone LIKE %s OR campaign_title LIKE %s)';
+			$where_conditions[] = '(name LIKE %s OR email LIKE %s OR phone LIKE %s OR campaign_title LIKE %s OR others_data LIKE %s)';
 			$search_term        = '%' . $wpdb->esc_like( $search ) . '%';
+			$where_values[]     = $search_term;
 			$where_values[]     = $search_term;
 			$where_values[]     = $search_term;
 			$where_values[]     = $search_term;
@@ -233,41 +234,121 @@ class Entries {
 			}
 		}
 
-		// One scoped IN(emails) query to get all spins for users on this page.
-		// Bounded by per_page (max 20 emails) — no per-row queries, no loops.
+		/**
+		 * SPIN HISTORY LOOKUP — How this works:
+		 *
+		 * Goal: For every entry row on the current page, find ALL previous spins made
+		 * by the same user (matched by email OR phone), so we can show a spin count
+		 * badge and a full spin history panel in the expanded row — with a SINGLE DB query.
+		 *
+		 * Step 1 — Collect unique identifiers from the current page entries.
+		 *   $page_emails = all non-empty unique emails on this page (max ~20)
+		 *   $page_phones = all non-empty unique phones on this page (max ~20)
+		 *
+		 * Step 2 — Build a composite key per entry for grouping.
+		 *   Format: "email|phone"
+		 *   Examples:
+		 *     Email-only entry  →  "user@email.com|"
+		 *     Phone-only entry  →  "|01793330005"        ← the | MUST stay, do NOT trim it!
+		 *     Both              →  "user@email.com|01793330005"
+		 *   IMPORTANT: We do NOT trim() the | because phone-only keys start with |.
+		 *   If we trim, the phone lands in the email slot when we explode(), and matching breaks.
+		 *
+		 * Step 3 — One SQL query: WHERE email IN (...) OR phone IN (...)
+		 *   This fetches all spins for all identifiers in one round-trip. No loops to DB.
+		 *
+		 * Step 4 — Map each fetched spin row back to matching entry keys.
+		 *   A spin can match an entry by email, by phone, or both.
+		 *   We deduplicate so the same spin row isn't added to the same key twice
+		 *   (edge case: entry has both email + phone, and the spin matches both).
+		 *
+		 * Step 5 — Attach spin_count and spin_history to each entry.
+		 *   spin_count    = total spins by this identity (including the current row)
+		 *   spin_history  = all spins EXCEPT the current entry's own row
+		 */
 		$page_emails = array_values( array_filter( array_unique( array_column( $entries, 'email' ) ) ) );
-		$history_map = []; // keyed by email => [ spin rows ]
+		$page_phones = array_values( array_filter( array_unique( array_column( $entries, 'phone' ) ) ) );
 
-		if ( ! empty( $page_emails ) ) {
-			$placeholders = implode( ',', array_fill( 0, count( $page_emails ), '%s' ) );
-			// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
+		$history_map = []; // keyed by "email|phone" composite identity => [ spin rows ]
+
+		// Build a helper: entry id => composite key, for attaching history later
+		$entry_key_map = [];
+		foreach ( $entries as $entry ) {
+			$entry_key_map[ $entry->id ] = ( $entry->email ?? '' ) . '|' . ( $entry->phone ?? '' );
+		}
+
+		$has_emails = ! empty( $page_emails );
+		$has_phones = ! empty( $page_phones );
+
+		if ( $has_emails || $has_phones ) {
+			// Build WHERE: (email IN (...)) OR (phone IN (...))
+			$conditions   = [];
+			$bind_values  = [];
+
+			if ( $has_emails ) {
+				$placeholders  = implode( ',', array_fill( 0, count( $page_emails ), '%s' ) );
+				$conditions[]  = "email IN ($placeholders)";
+				$bind_values   = array_merge( $bind_values, $page_emails );
+			}
+			if ( $has_phones ) {
+				$placeholders  = implode( ',', array_fill( 0, count( $page_phones ), '%s' ) );
+				$conditions[]  = "phone IN ($placeholders)";
+				$bind_values   = array_merge( $bind_values, $page_phones );
+			}
+
+			$history_where = implode( ' OR ', $conditions );
+
+			// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 			$all_spins = $wpdb->get_results(
 				$wpdb->prepare(
-					"SELECT id, email, campaign_id, campaign_title, others_data, created_at FROM {$wpdb->prefix}wdengage_entries WHERE email IN ($placeholders) ORDER BY created_at DESC",
-					$page_emails
+					"SELECT id, email, phone, campaign_id, campaign_title, others_data, created_at FROM {$wpdb->prefix}wdengage_entries WHERE $history_where ORDER BY created_at DESC",
+					$bind_values
 				)
 			);
 
 			foreach ( $all_spins as $spin ) {
-				if ( ! isset( $history_map[ $spin->email ] ) ) {
-					$history_map[ $spin->email ] = [];
-				}
 				// Format date
 				$spin->created_at_formatted = '-';
 				if ( ! empty( $spin->created_at ) ) {
 					$ts                         = strtotime( $spin->created_at . ' UTC' );
 					$spin->created_at_formatted = wp_date( $wp_format, $ts );
 				}
-				$history_map[ $spin->email ][] = $spin;
+
+				// Map this spin row to all matching entry keys (an email-only entry and a phone-only entry may both match)
+				$spin_email = $spin->email ?? '';
+				$spin_phone = $spin->phone ?? '';
+
+				foreach ( $entry_key_map as $entry_id => $entry_key ) {
+					[ $e_email, $e_phone ] = explode( '|', $entry_key . '|' ); // safe split
+					$matches_email = $spin_email && $e_email && $spin_email === $e_email;
+					$matches_phone = $spin_phone && $e_phone && $spin_phone === $e_phone;
+					if ( $matches_email || $matches_phone ) {
+						if ( ! isset( $history_map[ $entry_key ] ) ) {
+							$history_map[ $entry_key ] = [];
+						}
+						// Avoid duplicating the same spin row under the same key
+						$already_added = false;
+						foreach ( $history_map[ $entry_key ] as $existing ) {
+							if ( (int) $existing->id === (int) $spin->id ) {
+								$already_added = true;
+								break;
+							}
+						}
+						if ( ! $already_added ) {
+							$history_map[ $entry_key ][] = $spin;
+						}
+					}
+				}
 			}
 		}
 
 		// Attach spin_count and spin_history to each entry (exclude current entry from its own history).
 		foreach ( $entries as $entry ) {
-			$all_for_email        = $history_map[ $entry->email ] ?? [];
-			$entry->spin_count    = count( $all_for_email );
+			$key                  = $entry_key_map[ $entry->id ] ?? '';
+			$all_for_identity     = $history_map[ $key ] ?? [];
+			$entry->spin_count    = count( $all_for_identity );
 			$entry->spin_history  = array_values(
-				array_filter( $all_for_email, fn( $s ) => (int) $s->id !== (int) $entry->id )
+				array_filter( $all_for_identity, fn( $s ) => (int) $s->id !== (int) $entry->id )
 			);
 		}
 
@@ -399,8 +480,9 @@ class Entries {
 		$where_values     = [];
 
 		if ( ! empty( $search ) ) {
-			$where_conditions[] = '(name LIKE %s OR email LIKE %s OR phone LIKE %s OR campaign_title LIKE %s)';
+			$where_conditions[] = '(name LIKE %s OR email LIKE %s OR phone LIKE %s OR campaign_title LIKE %s OR others_data LIKE %s)';
 			$search_term        = '%' . $wpdb->esc_like( $search ) . '%';
+			$where_values[]     = $search_term;
 			$where_values[]     = $search_term;
 			$where_values[]     = $search_term;
 			$where_values[]     = $search_term;

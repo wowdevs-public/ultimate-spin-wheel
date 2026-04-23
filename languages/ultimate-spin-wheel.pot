@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Spin Wheel - Gamify Your Store & Boost Sales 2.0.4\n"
+"Project-Id-Version: Ultimate Spin Wheel - Gamify Your Store & Boost Sales 2.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-spin-wheel\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-10T17:50:45+00:00\n"
+"POT-Creation-Date: 2026-04-23T19:01:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: ultimate-spin-wheel\n"
@@ -37,134 +37,6 @@ msgstr ""
 #. Author URI of the plugin
 #: ultimate-spin-wheel.php
 msgid "https://wowdevs.com/"
-msgstr ""
-
-#: dci/deactivate-feedback.php:48
-msgid "Give feedback"
-msgstr ""
-
-#: dci/deactivate-feedback.php:50
-msgid "Goodbyes are never easy. If you have a moment, please share your feedback on how we can improve."
-msgstr ""
-
-#: dci/deactivate-feedback.php:76
-msgid "Switching Domain"
-msgstr ""
-
-#: dci/deactivate-feedback.php:99
-msgid "Couldn't understand"
-msgstr ""
-
-#: dci/deactivate-feedback.php:146
-msgid "Found a better plugin"
-msgstr ""
-
-#: dci/deactivate-feedback.php:163
-msgid "Missing a specific feature"
-msgstr ""
-
-#: dci/deactivate-feedback.php:201
-msgid "Not working"
-msgstr ""
-
-#: dci/deactivate-feedback.php:225
-msgid "Others"
-msgstr ""
-
-#: dci/deactivate-feedback.php:233
-msgid "What is the main reason for deactivating?"
-msgstr ""
-
-#: dci/deactivate-feedback.php:239
-msgid "Skip & Deactivate"
-msgstr ""
-
-#: dci/deactivate-feedback.php:243
-msgid "Cancel"
-msgstr ""
-
-#: dci/deactivate-feedback.php:248
-msgid "Submit & Deactivate"
-msgstr ""
-
-#: dci/insights.php:655
-msgid "Learn More"
-msgstr ""
-
-#: dci/insights.php:664
-msgid "Yes, I'd Love To Contribute"
-msgstr ""
-
-#: dci/insights.php:667
-msgid "Skip For Now"
-msgstr ""
-
-#: dci/insights.php:670
-msgid "No Thanks"
-msgstr ""
-
-#: dci/insights.php:705
-msgid "What we"
-msgstr ""
-
-#: dci/insights.php:706
-msgid "collect"
-msgstr ""
-
-#: dci/insights.php:714
-msgid "Allow"
-msgstr ""
-
-#: dci/insights.php:717
-msgid "I'll Skip For Now"
-msgstr ""
-
-#: dci/insights.php:720
-msgid "Don't Allow"
-msgstr ""
-
-#: dci/notice.php:21
-msgid "Never miss an important update."
-msgstr ""
-
-#: dci/notice.php:24
-msgid "Get notified when there are new updates available for your plugins and themes. In the current version of this message it is clear that you are being sent a confirmation email to confirm your opt-in."
-msgstr ""
-
-#: dci/notice.php:42
-msgid "Allow & Continue"
-msgstr ""
-
-#: dci/notice.php:46
-msgid "Skip"
-msgstr ""
-
-#: dci/notice.php:52
-msgid "Which permission are being granted?"
-msgstr ""
-
-#: dci/notice.php:64
-msgid "View Basic Profile Info."
-msgstr ""
-
-#: dci/notice.php:67
-msgid "Your WordPress user's first & last name, and email address."
-msgstr ""
-
-#: dci/notice.php:79
-msgid "View Basic Website Info."
-msgstr ""
-
-#: dci/notice.php:82
-msgid "Homepage URL & title, WP & PHP versions, and site language."
-msgstr ""
-
-#: dci/notice.php:94
-msgid "View Basic Plugin Info."
-msgstr ""
-
-#: dci/notice.php:97
-msgid "Current Plugin & SDK versions, and if active or uninstalled."
 msgstr ""
 
 #: includes/addons.php:57
@@ -335,15 +207,15 @@ msgid "Original campaign not found"
 msgstr ""
 
 #: includes/core/class-entries.php:99
-#: includes/core/class-entries.php:294
-#: includes/core/class-entries.php:325
-#: includes/core/class-entries.php:371
-#: includes/core/class-entries.php:580
-#: includes/core/class-entries.php:592
-#: includes/core/class-entries.php:611
-#: includes/core/class-entries.php:630
-#: includes/core/class-entries.php:769
-#: includes/core/class-entries.php:834
+#: includes/core/class-entries.php:375
+#: includes/core/class-entries.php:406
+#: includes/core/class-entries.php:452
+#: includes/core/class-entries.php:662
+#: includes/core/class-entries.php:674
+#: includes/core/class-entries.php:693
+#: includes/core/class-entries.php:712
+#: includes/core/class-entries.php:851
+#: includes/core/class-entries.php:916
 #: includes/core/class-reports.php:41
 #: includes/core/class-settings.php:170
 #: includes/core/class-settings.php:192
@@ -354,20 +226,20 @@ msgstr ""
 msgid "Invalid nonce"
 msgstr ""
 
-#: includes/core/class-entries.php:584
+#: includes/core/class-entries.php:666
 msgid "Cache cleared successfully"
 msgstr ""
 
 #. translators: 1: Number of leads updated, 2: New stage name
-#: includes/core/class-entries.php:742
+#: includes/core/class-entries.php:824
 msgid "%1$d leads updated to %2$s"
 msgstr ""
 
-#: includes/core/class-entries.php:822
+#: includes/core/class-entries.php:904
 msgid "Identity blocked successfully"
 msgstr ""
 
-#: includes/core/class-entries.php:856
+#: includes/core/class-entries.php:938
 msgid "Identity unblocked successfully"
 msgstr ""
 

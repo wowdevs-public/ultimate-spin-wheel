@@ -1,8 +1,11 @@
 === Ultimate Spin Wheel - Gamify Your Store & Boost Sales ===
+Version: 2.0.5
+Author: wowDevs
+Author URI: https://wowdevs.com/
 Contributors: wowdevs, bdkoder
 Donate link: https://wowdevs.com/plugins/spin-wheel
 Tags: spin wheel, coupon wheel, discount wheel, WooCommerce, prize wheel
-Stable tag: 2.0.4
+Stable tag: 2.0.5
 Requires PHP: 7.4
 Requires at least: 6.1
 Tested up to: 6.9
@@ -18,6 +21,8 @@ Boost sales and capture leads with engaging spin-to-win popups. Reduce cart aban
 Ultimate Spin Wheel turns your website into an exciting, interactive experience that dramatically increases conversions. By using gamification psychology, you can capture leads, prevent cart abandonment, and reward visitors—all while they have fun spinning to win prizes!
 
 [Live Demo](https://wowdevs.com/plugins/spin-wheel) | [Documentation](https://wowdevs.com/docs/spin-wheel/) | [PRO Features](https://wowdevs.com/plugins/spin-wheel)
+
+https://youtu.be/Ivdi9vnJQ6M
 
 ### 🚀 Why Choose Ultimate Spin Wheel?
 
@@ -187,6 +192,12 @@ Development happens on GitHub:
 [https://github.com/wowdevs-public/ultimate-spin-wheel/](https://github.com/wowdevs-public/ultimate-spin-wheel/)
 
 == Changelog ==
+
+= 2.0.5 [24th April 2026] =
+*   **New:** Entries — Device Info panel (IP, Browser/OS, Device ID) in expanded row — Pro only
+*   **Improved:** Entries — Spin History now matches by phone number as well as email
+*   **Fixed:** Entries — Phone-only entries now correctly show spin history
+
 
 = 2.0.4 [10th March 2026] =
 *   **New:** Auto Generate Coupon type (Pro) — unique code per winner, no WooCommerce needed

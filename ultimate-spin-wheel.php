@@ -3,7 +3,7 @@
  * Plugin Name:       Ultimate Spin Wheel - Gamify Your Store & Boost Sales
  * Plugin URI:        https://wowdevs.com/plugins/spin-wheel
  * Description:       The Ultimate Spin Wheel plugin allows you to engage your visitors with an interactive cart that offers coupons and other rewards, seamlessly integrated with WooCommerce.
- * Version:           2.0.4
+ * Version:           2.0.5
  * Requires at least: 6.1
  * Requires PHP:      7.4
  * Author:            wowDevs
@@ -15,7 +15,7 @@
  *
  * @package           USPIN_WHEEL
  * @author            wowDevs
- * @copyright         2024 wowDevs
+ * @copyright         2026 wowDevs
  * @license           GPL-2.0-or-later
  */
 
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-define( 'USPIN_WHEEL_VERSION', '2.0.4' );
+define( 'USPIN_WHEEL_VERSION', '2.0.5' );
 
 define( 'USPIN_WHEEL_NAME', 'Spin Wheel' );
 define( 'USPIN_WHEEL_SLUG', 'ultimate-spin-wheel' );
@@ -154,12 +154,8 @@ if ( ! function_exists( 'ultimate_spin_wheel_dci_plugin' ) ) {
 		// Include DCI SDK.
 		require_once __DIR__ . '/dci/start.php';
 
-		wp_register_style( 'dci-sdk-ultimate-spin-wheel', USPIN_WHEEL_URL . 'dci/assets/css/dci.css', [], '1.3.0', 'all' );
-		wp_enqueue_style( 'dci-sdk-ultimate-spin-wheel' );
-
 		dci_dynamic_init(
 			[
-				'sdk_version'          => '1.2.1',
 				'product_id'           => 6,
 				'plugin_name'          => 'Ultimate Spin Wheel', // make simple, must not empty
 				'plugin_title'         => 'Love using Ultimate Spin Wheel? Congrats 🎉  ( Never miss an Important Update )', // You can describe your plugin title here
@@ -196,12 +192,8 @@ if ( ! function_exists( 'ultimate_spin_wheel_rc_plugin' ) ) {
 
 		require_once USPIN_WHEEL_PATH . 'includes/feedbacks/start.php';
 
-		wp_register_style( 'rc-sdk-ultimate-spin-wheel', USPIN_WHEEL_URL . 'includes/feedbacks/assets/rc.css', [], '1.0.0', 'all' );
-		wp_enqueue_style( 'rc-sdk-ultimate-spin-wheel' );
-
 		rc_dynamic_init(
 			[
-				'sdk_version'  => '1.0.0',
 				'plugin_name'  => 'Ultimate Spin Wheel',
 				'plugin_icon'  => USPIN_WHEEL_ASSETS_URL . 'images/logo.png',
 				'slug'         => 'ultimate-spin-wheel',

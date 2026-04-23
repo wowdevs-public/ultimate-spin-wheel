@@ -1,35 +1,47 @@
 <?php
 /**
- * Main File
+ * Feedbacks SDK Loader
+ * SDK Version 1.0.1
+ *
+ * Strategy: "highest-version-wins"
+ * - If multiple plugins include this feedbacks system, the latest code wins.
+ * - One feedback notice per admin page load.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$_rc_sdk_this_version = '1.0.1';
+
+if (
+	! isset( $GLOBALS['_rc_sdk_version'] ) ||
+	version_compare( $_rc_sdk_this_version, $GLOBALS['_rc_sdk_version'], '>' )
+) {
+	$GLOBALS['_rc_sdk_version'] = $_rc_sdk_this_version;
+	$GLOBALS['_rc_sdk_path']    = dirname( __FILE__ );
+}
+
 if ( ! function_exists( 'rc_dynamic_init' ) ) {
 	function rc_dynamic_init( $params ) {
 
-		if ( is_admin() ) :
+		if ( ! is_admin() ) {
+			return;
+		}
 
-			$menu_slug = isset( $params['menu']['slug'] ) ? $params['menu']['slug'] : false;
-      // phpcs:ignore
-			$current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : false;
+		// Use the winning Feedback SDK path.
+		$sdk_path = $GLOBALS['_rc_sdk_path'];
 
-			/**
-			 * Attach SDK to current page
-			 */
-			$params['current_page'] = $current_page;
-			$params['menu_slug']    = $menu_slug;
+		// Auto-inject the winning version.
+		$params['sdk_version'] = $GLOBALS['_rc_sdk_version'];
 
-			/**
-			 * Include SDK
-			 */
-			require_once __DIR__ . '/notice.php';
-			if ( function_exists( 'rc_sdk_automate' ) ) {
-				rc_sdk_automate( $params );
-			}
+		$params['current_page'] = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : false;
+		$params['menu_slug']    = isset( $params['menu']['slug'] ) ? $params['menu']['slug'] : false;
 
-		endif;
+		require_once $sdk_path . '/notice.php';
+
+		if ( function_exists( 'rc_sdk_automate' ) ) {
+			rc_sdk_automate( $params );
+		}
 	}
 }
